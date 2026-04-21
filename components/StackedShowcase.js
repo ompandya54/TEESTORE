@@ -25,14 +25,14 @@ export default function StackedShowcase({ products }) {
   const featured = products.slice(0, 4);
 
   return (
-    <div ref={containerRef} className="relative h-[500vh] bg-zinc-950">
+    <div ref={containerRef} className="relative h-[800vh] bg-zinc-950">
       <div className="sticky top-0 h-screen w-full flex flex-col md:flex-row items-center justify-center overflow-hidden">
 
         {/* Background Typography (Parallax & Smooth Fade) */}
         <motion.div
           style={{
-            y: useTransform(smoothProgress, [0, 1], [150, -150]),
-            opacity: useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0, 0.05, 0.05, 0])
+            y: useTransform(smoothProgress, [0, 1], [250, -250]),
+            opacity: useTransform(smoothProgress, [0, 0.1, 0.9, 1], [0, 0.05, 0.05, 0])
           }}
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
         >
@@ -44,8 +44,8 @@ export default function StackedShowcase({ products }) {
           <div className="max-w-md">
             <motion.div
               style={{
-                opacity: useTransform(smoothProgress, [0, 0.1], [0, 1]),
-                y: useTransform(smoothProgress, [0, 0.1], [20, 0])
+                opacity: useTransform(smoothProgress, [0, 0.05], [0, 1]),
+                y: useTransform(smoothProgress, [0, 0.05], [40, 0])
               }}
             >
               <span className="text-[10px] font-black uppercase tracking-[0.6em] text-zinc-600 mb-6 block">Premium Dossier</span>
@@ -62,21 +62,23 @@ export default function StackedShowcase({ products }) {
         {/* RIGHT SIDE: Stacking Cards */}
         <div className="w-full md:w-1/2 h-full flex items-center justify-center relative p-8 md:p-0">
           {featured.map((product, i) => {
-            const start = i * 0.15;
-            const end = (i + 1) * 0.15;
+            // Updated timings for 4 cards over 800vh
+            const start = i * 0.22; // More spread out
+            const entranceEnd = start + 0.12;
+            const focusEnd = start + 0.18;
+            const exitEnd = start + 0.28;
 
-            // 🚀 SMOOTH GLIDE PHYSICS
-            // Card slides from right-bottom into center
-            const y = useTransform(smoothProgress, [start, start + 0.15], [800, 0]);
-            const x = useTransform(smoothProgress, [start, start + 0.15], [200, 0]);
-            const rotate = useTransform(smoothProgress, [start, start + 0.15], [15, i % 2 === 0 ? -3 : 3]);
+            // 🚀 ULTRA SMOOTH GLIDE PHYSICS
+            const y = useTransform(smoothProgress, [start, entranceEnd], [1200, 0]);
+            const x = useTransform(smoothProgress, [start, entranceEnd], [300, 0]);
+            const rotate = useTransform(smoothProgress, [start, entranceEnd], [20, i % 2 === 0 ? -3 : 3]);
 
-            // 💎 DEPTH EFFECT: When the NEXT card comes, the current card shrinks and dims
-            const nextStart = (i + 1) * 0.2;
-            const scale = useTransform(smoothProgress, [start + 0.15, nextStart], [1, 0.85]);
-            const opacity = useTransform(smoothProgress, [Math.max(0, start - 0.05), start, nextStart], [0, 1, 0.4]);
-            const blur = useTransform(smoothProgress, [start + 0.15, nextStart], ["blur(0px)", "blur(12px)"]);
-            const isFocal = useTransform(smoothProgress, [start, start + 0.15, nextStart], [0, 1, 0]);
+            // 💎 DEPTH & FOCUS EFFECTS
+            const nextTrigger = start + 0.2;
+            const scale = useTransform(smoothProgress, [entranceEnd, nextTrigger], [1, 0.8]);
+            const opacity = useTransform(smoothProgress, [Math.max(0, start - 0.02), start, entranceEnd, nextTrigger], [0, 0.1, 1, 0.3]);
+            const blur = useTransform(smoothProgress, [entranceEnd, nextTrigger], ["blur(0px)", "blur(20px)"]);
+            const isFocal = useTransform(smoothProgress, [start, entranceEnd, nextTrigger], [0, 1, 0]);
 
             return (
               <motion.div
@@ -90,7 +92,7 @@ export default function StackedShowcase({ products }) {
                   filter: blur,
                   zIndex: 30 + i
                 }}
-                className="absolute w-full max-w-[300px] md:max-w-[420px] aspect-[3/4] group cursor-pointer"
+                className="absolute w-full max-w-[320px] md:max-w-[450px] aspect-[3/4] group cursor-pointer"
               >
                 <Link href={`/products/${product._id}`} className="block h-full w-full">
                   <div className="relative h-full w-full bg-zinc-900 border border-zinc-800/50 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] overflow-hidden group-hover:border-zinc-400 transition-colors duration-700 rounded-sm">
