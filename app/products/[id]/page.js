@@ -4,7 +4,7 @@ import Link from "next/link";
 import AddToCartForm from "@/components/AddToCartForm";
 import ProductGallery from "@/components/ProductGallery";
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // Revalidate every hour for detail pages
 
 async function getProduct(id) {
   await dbConnect();
@@ -64,18 +64,18 @@ export default async function ProductDetailPage({ params }) {
             {/* Image Gallery */}
             <div className="flex flex-col-reverse">
               <ProductGallery images={product.images} productName={product.name} />
-              
+
               {product.stock < 10 && product.stock > 0 && (
-                 <div className="mb-4">
-                   <span className="bg-red-600/90 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 uppercase tracking-widest rounded-sm">Low Stock: {product.stock} left</span>
-                 </div>
+                <div className="mb-4">
+                  <span className="bg-red-600/90 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 uppercase tracking-widest rounded-sm">Low Stock: {product.stock} left</span>
+                </div>
               )}
             </div>
 
             {/* Product Info */}
             <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
               <h1 className="text-4xl font-black tracking-tighter uppercase text-zinc-100">{product.name}</h1>
-              
+
               <div className="mt-3">
                 <h2 className="sr-only">Product information</h2>
                 <p className="text-3xl text-zinc-300 font-medium">${product.price.toFixed(2)}</p>
@@ -92,16 +92,16 @@ export default async function ProductDetailPage({ params }) {
               <AddToCartForm product={product} />
 
               <div className="mt-8 flex flex-col items-center p-6 border border-zinc-800 rounded-sm bg-zinc-900/30">
-                 <div className="flex gap-8">
-                   <div className="flex flex-col items-center text-zinc-300">
-                     <svg className="w-6 h-6 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 13l4 4L19 7"></path></svg>
-                     <span className="text-[10px] uppercase tracking-widest font-bold">Free Shipping</span>
-                   </div>
-                   <div className="flex flex-col items-center text-zinc-300">
-                     <svg className="w-6 h-6 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                     <span className="text-[10px] uppercase tracking-widest font-bold">Secure Checkout</span>
-                   </div>
-                 </div>
+                <div className="flex gap-8">
+                  <div className="flex flex-col items-center text-zinc-300">
+                    <svg className="w-6 h-6 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 13l4 4L19 7"></path></svg>
+                    <span className="text-[10px] uppercase tracking-widest font-bold">Free Shipping</span>
+                  </div>
+                  <div className="flex flex-col items-center text-zinc-300">
+                    <svg className="w-6 h-6 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    <span className="text-[10px] uppercase tracking-widest font-bold">Secure Checkout</span>
+                  </div>
+                </div>
               </div>
 
             </div>

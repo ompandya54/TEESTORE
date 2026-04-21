@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function LatestArrivals({ products }) {
   if (!products || products.length === 0) return null;
@@ -14,7 +15,7 @@ export default function LatestArrivals({ products }) {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         <div className="flex justify-between items-end mb-16 border-b border-zinc-100 pb-8">
           <div>
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400">Newly Archived</span>
@@ -37,15 +38,17 @@ export default function LatestArrivals({ products }) {
             >
               <Link href={`/products/${product._id}`} className="block relative overflow-hidden">
                 <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 border border-zinc-200 group-hover:border-zinc-400 transition-colors duration-500">
-                  <img
+                  <Image
                     src={product.images[0] || "/placeholder-tshirt.png"}
                     alt={product.name}
-                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
-                  
+
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-zinc-950/0 group-hover:bg-zinc-950/5 transition-colors duration-500" />
-                  
+
                   {/* Floating Price Tag */}
                   <div className="absolute top-4 right-4 bg-white px-3 py-1.5 shadow-xl shadow-black/5 transform -skew-x-12 translate-x-10 group-hover:translate-x-0 transition-transform duration-500">
                     <p className="text-xs font-black text-zinc-950">${product.price.toFixed(2)}</p>
