@@ -19,6 +19,40 @@ async function getProduct(id) {
   };
 }
 
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const product = await getProduct(resolvedParams.id);
+
+  if (!product) {
+    return {
+      title: "Product Not Found",
+    };
+  }
+
+  return {
+    title: product.name,
+    description: product.description.substring(0, 160),
+    openGraph: {
+      title: `${product.name} | TeeStore`,
+      description: product.description.substring(0, 160),
+      images: [
+        {
+          url: product.images[0] || '/og-image.png',
+          width: 800,
+          height: 600,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} | TeeStore`,
+      description: product.description.substring(0, 160),
+      images: [product.images[0] || '/og-image.png'],
+    },
+  };
+}
+
 // NextJS 16 Dynamic Route Page
 export default async function ProductDetailPage({ params }) {
   // Await params specifically required in Next 15+

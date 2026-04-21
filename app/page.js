@@ -6,6 +6,11 @@ import StackedShowcase from "@/components/StackedShowcase";
 import LatestArrivals from "@/components/LatestArrivals";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Home | Luxury T-Shirt Archive",
+  description: "Explore our latest collection of premium, ethically sourced organic cotton t-shirts. Minimalist designs for the modern digital skin.",
+};
+
 export const revalidate = 600; // Revalidate every 10 minutes
 
 async function getLatestProducts() {

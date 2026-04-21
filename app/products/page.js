@@ -3,6 +3,11 @@ import Product from "@/models/Product";
 import Link from "next/link";
 import ProductCatalog from "@/components/ProductCatalog";
 
+export const metadata = {
+  title: "Shop All Products",
+  description: "Browse our complete archive of premium t-shirts. Filter by category and find your perfect fit.",
+};
+
 // Force dynamic rendering since products might change
 export const revalidate = 600; // Revalidate every 10 minutes
 
