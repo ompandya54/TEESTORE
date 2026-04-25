@@ -4,18 +4,48 @@ import Link from "next/link";
 import AddToCartForm from "@/components/AddToCartForm";
 import ProductGallery from "@/components/ProductGallery";
 
-export const revalidate = 3600; // Revalidate every hour for detail pages
+const BASE_URL = "https://teestore-ecom.vercel.app";
+
+export const revalidate = 3600;
 
 async function getProduct(id) {
   await dbConnect();
   const product = await Product.findById(id).lean();
   if (!product) return null;
-
   return {
     ...product,
     _id: product._id.toString(),
     createdAt: product.createdAt?.toISOString(),
-    updatedAt: product.updatedAt?.toISOString()
+    updatedAt: product.updatedAt?.toISOString(),
+  };
+}
+
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const product = await getProduct(id);
+  if (!product) return { title: "Product Not Found" };
+
+  return {
+    title: `${product.name} | Premium T-Shirt`,
+    description: `${product.description?.slice(0, 150)} — Shop ${product.name} in sizes ${product.sizes?.join(", ")}. ₹${product.price} | Free shipping in India.`,
+    keywords: [
+      product.name, `${product.name} tshirt`, `buy ${product.name} india`,
+      `${product.category} tshirt india`, "premium tshirt india", "organic cotton tshirt",
+    ],
+    alternates: { canonical: `${BASE_URL}/products/${id}` },
+    openGraph: {
+      title: `${product.name} | TeeStore`,
+      description: product.description?.slice(0, 150),
+      url: `${BASE_URL}/products/${id}`,
+      images: product.images?.[0]
+        ? [{ url: product.images[0], width: 800, height: 1000, alt: product.name }]
+        : [{ url: "/og-image.png", width: 1200, height: 630 }],
+      type: "website",
+    },
+    other: {
+      "product:price:amount": product.price,
+      "product:price:currency": "INR",
+    },
   };
 }
 

@@ -7,8 +7,21 @@ import LatestArrivals from "@/components/LatestArrivals";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Home | Luxury T-Shirt Archive",
-  description: "Explore our latest collection of premium, ethically sourced organic cotton t-shirts. Minimalist designs for the modern digital skin.",
+  title: "Premium Organic Cotton T-Shirts | Buy Online India",
+  description:
+    "TeeStore — India's finest organic cotton t-shirts. 240GSM slim-fit tees for men, women, kids & sports. Ethically made, pre-shrunk, 200+ wash guarantee. Shop now.",
+  keywords: [
+    "premium tshirts india", "organic cotton tshirts india", "buy tshirts online",
+    "best tshirts india", "slim fit tshirts", "ethical fashion india",
+    "240gsm tshirts", "minimalist tshirts india", "luxury basics india",
+  ],
+  alternates: { canonical: "https://teestore-ecom.vercel.app" },
+  openGraph: {
+    title: "TeeStore | Premium Organic Cotton T-Shirts India",
+    description: "India's finest organic cotton t-shirts. 240GSM, slim-fit, ethically made. Shop now.",
+    url: "https://teestore-ecom.vercel.app",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 export const revalidate = 600; // Revalidate every 10 minutes
