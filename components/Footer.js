@@ -50,7 +50,7 @@ export default function Footer() {
           <div className="flex flex-col gap-6">
             <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600">Company</h4>
             <div className="flex flex-col gap-4 text-sm font-bold tracking-tight text-zinc-400">
-              <Link href="#" className="hover:text-white transition-colors">Our Story</Link>
+              <Link href="/our-story" className="hover:text-white transition-colors">Our Story</Link>
               <Link href="#" className="hover:text-white transition-colors">Sustainability</Link>
               <Link href="#" className="hover:text-white transition-colors">Manufactory</Link>
               <Link href="#" className="hover:text-white transition-colors">Press</Link>
@@ -61,16 +61,16 @@ export default function Footer() {
             <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600">Support</h4>
             <div className="flex flex-col gap-4 text-sm font-bold tracking-tight text-zinc-400">
               <Link href="#" className="hover:text-white transition-colors">Shipping & Returns</Link>
-              <Link href="#" className="hover:text-white transition-colors">Size Guide</Link>
+              <Link href="/size-guide" className="hover:text-white transition-colors">Size Guide</Link>
               <Link href="#" className="hover:text-white transition-colors">Care Instructions</Link>
-              <Link href="#" className="hover:text-white transition-colors">Contact Us</Link>
+              <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
             </div>
           </div>
 
           <div className="flex flex-col gap-6">
             <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600">Social</h4>
             <div className="flex flex-col gap-4 text-sm font-bold tracking-tight text-zinc-400">
-              <Link href="#" className="hover:text-white transition-colors">Instagram</Link>
+              <Link href="https://instagram.com/om_h_pandya" target="_blank" className="hover:text-white transition-colors">Instagram</Link>
               <Link href="#" className="hover:text-white transition-colors">Twitter (X)</Link>
               <Link href="#" className="hover:text-white transition-colors">Pinterest</Link>
               <Link href="#" className="hover:text-white transition-colors">TikTok</Link>
