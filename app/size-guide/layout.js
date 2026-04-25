@@ -7,11 +7,11 @@ export const metadata = {
     "mens tshirt size guide", "womens tshirt size chart", "tshirt fit guide",
     "S M L XL XXL tshirt measurements", "tshirt chest measurement",
   ],
-  alternates: { canonical: "https://teestore-ecom.vercel.app/size-guide" },
+  alternates: { canonical: "https://teeestore.vercel.app//size-guide" },
   openGraph: {
     title: "Size Guide | TeeStore",
     description: "Find your perfect fit. Chest, waist, length & shoulder measurements for S–XXL in CM and inches.",
-    url: "https://teestore-ecom.vercel.app/size-guide",
+    url: "https://teeestore.vercel.app//size-guide",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
 };

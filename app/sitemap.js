@@ -1,7 +1,7 @@
 import dbConnect from "@/lib/mongodb";
 import Product from "@/models/Product";
 
-const BASE_URL = "https://teestore-ecom.vercel.app";
+const BASE_URL = "https://teeestore.vercel.app/";
 
 export default async function sitemap() {
   // Static pages

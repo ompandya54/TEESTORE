@@ -15,11 +15,11 @@ export const metadata = {
     "best tshirts india", "slim fit tshirts", "ethical fashion india",
     "240gsm tshirts", "minimalist tshirts india", "luxury basics india",
   ],
-  alternates: { canonical: "https://teestore-ecom.vercel.app" },
+  alternates: { canonical: "https://teeestore.vercel.app/" },
   openGraph: {
     title: "TeeStore | Premium Organic Cotton T-Shirts India",
     description: "India's finest organic cotton t-shirts. 240GSM, slim-fit, ethically made. Shop now.",
-    url: "https://teestore-ecom.vercel.app",
+    url: "https://teeestore.vercel.app/",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
 };

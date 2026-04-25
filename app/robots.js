@@ -1,4 +1,4 @@
-const BASE_URL = "https://teestore-ecom.vercel.app";
+const BASE_URL = "https://teeestore.vercel.app/";
 
 export default function robots() {
   return {

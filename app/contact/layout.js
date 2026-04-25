@@ -7,11 +7,11 @@ export const metadata = {
     "teestore email", "teestore instagram", "order help teestore",
     "tshirt return india", "tshirt exchange india",
   ],
-  alternates: { canonical: "https://teestore-ecom.vercel.app/contact" },
+  alternates: { canonical: "https://teeestore.vercel.app//contact" },
   openGraph: {
     title: "Contact Us | TeeStore",
     description: "Order issues, size questions, returns — we reply to every message within 24 hours.",
-    url: "https://teestore-ecom.vercel.app/contact",
+    url: "https://teeestore.vercel.app//contact",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
 };

@@ -13,11 +13,11 @@ export const metadata = {
     "sports t-shirts india", "organic cotton tshirts shop",
     "slim fit tshirts india", "best tshirts india 2026",
   ],
-  alternates: { canonical: "https://teestore-ecom.vercel.app/products" },
+  alternates: { canonical: "https://teeestore.vercel.app//products" },
   openGraph: {
     title: "Shop All T-Shirts | TeeStore India",
     description: "Browse our complete archive of premium organic cotton t-shirts. Men, Women, Kids & Sports.",
-    url: "https://teestore-ecom.vercel.app/products",
+    url: "https://teeestore.vercel.app//products",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
 };
