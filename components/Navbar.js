@@ -45,6 +45,14 @@ export default function Navbar() {
               <div className={`absolute inset-0 skew-x-[20deg] -z-10 transition-colors ${pathname === '/products' ? 'bg-black' : 'bg-transparent group-hover/link:bg-gray-900'}`}></div>
               Shop
             </Link>
+            <Link
+              href="/our-story"
+              className={`relative px-8 py-2 text-[10px] font-black tracking-[0.2em] uppercase transition-all overflow-hidden group/link
+                ${pathname === '/our-story' ? 'text-white shadow-lg' : 'text-gray-900 hover:text-white'}`}
+            >
+              <div className={`absolute inset-0 skew-x-[20deg] -z-10 transition-colors ${pathname === '/our-story' ? 'bg-black' : 'bg-transparent group-hover/link:bg-gray-900'}`}></div>
+              Our Story
+            </Link>
           </div>
 
           {/* Cart Icon */}
